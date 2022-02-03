@@ -6,15 +6,39 @@
         xmlns:local="clr-namespace:graWKosci3P"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        
         <Button Content="Rzuć kośćmi"
                 x:Name="rollbtn"
-                DockPanel.Dock="Bottom" 
-                Click="rollbtn_Click"/>
-        <Button Content="Wyzeruj kości"
-                x:Name="clearbtn"
-                DockPanel.Dock="Bottom" 
-                Click="clearbtn_Click"/>
+                Click="rollbtn_Click"
+                Grid.Row="1"/>
+
+<!-- zmienic na start-->
+        <Button Content="Start gry" 
+                x:Name="clearbtn" 
+                Click="clearbtn_Click"
+                Grid.Column="2"/>
+        <Button Content="Zatwierdź"
+                Grid.Column="1"
+                Grid.Row="1" Click="zatwierdzbtn_Click"/>
+        <TextBlock
+                Text="Tu suma punktów"
+                Grid.Column="2"
+                Grid.Row="1"/>
+        <DataGrid 
+                Grid.Column="1"
+            ItemsSource="{Binding scores}">
+            
+        </DataGrid>
         <ItemsControl
             ItemsSource="{Binding results}">
             <ItemsControl.ItemsPanel>
@@ -140,5 +164,5 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         
-    </DockPanel>
+    </Grid>
 </Window>
